@@ -9,13 +9,21 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { AddPatientComponent } from './add-patient/add-patient.component';
+import { AddPatientComponentDialog } from './add-patient/add-patient.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    AddPatientComponent,
+    AddPatientComponentDialog,
+    
   ],
   imports: [
     BrowserModule,
@@ -25,9 +33,12 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MatToolbarModule,
     MatSidenavModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddPatientComponentDialog]
 })
 export class AppModule { }
