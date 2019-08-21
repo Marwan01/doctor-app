@@ -13,7 +13,8 @@ import { AddPatientComponent } from './add-patient/add-patient.component';
 import { AddPatientComponentDialog } from './add-patient/add-patient.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -35,7 +36,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatMenuModule,
     MatIconModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
