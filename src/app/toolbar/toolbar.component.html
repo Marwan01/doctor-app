@@ -1,18 +1,26 @@
-<mat-toolbar color="primary">
-        <mat-toolbar-row>
-          <span>Custom Toolbar</span>
-        </mat-toolbar-row>
-      
-        <mat-toolbar-row>
-          <span>Second Line</span>
-          <span class="example-spacer"></span>
-          <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
-        </mat-toolbar-row>
-      
-        <mat-toolbar-row>
-          <span>Third Line</span>
-          <span class="example-spacer"></span>
-          <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-          <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
-        </mat-toolbar-row>
-      </mat-toolbar>
+<div class="mat-app-background">
+  <mat-toolbar color="primary">    
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>assignment</mat-icon>
+        <span>About</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>help</mat-icon>
+        <span>Help</span>
+      </button>
+    </mat-menu>
+      <span class="title">Welcome to the {{title}}</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="modal" aria-label="icon-button with a menu">
+          <mat-icon>person_add</mat-icon>
+        </button>
+  </mat-toolbar>
+</div>
