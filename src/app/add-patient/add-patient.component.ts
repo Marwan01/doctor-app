@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {NgForm} from '@angular/forms';
-import { Patient } from './Patient';
+import {NgModule} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms'
+import { Patient } from './Patient';
 
-
+let checked=false;
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
@@ -14,15 +14,9 @@ export class AddPatientComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddPatientComponentDialog, {
+    this.dialog.open(AddPatientComponentDialog, {
       width: '60%',
       minHeight: '400px',
-      // data: {name: this.name, animal: this.animal}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log( lastname, 'The dialog was closed');
-      // this.animal = result;
     });
   }
 }
@@ -38,17 +32,24 @@ export class AddPatientComponentDialog {
       id: new FormControl(0),
       firstname: new FormControl(),
       lastname: new FormControl(),
+      diagnosis: new FormControl(),
+      notes: new FormControl(),
+      date: new FormControl(),
+      examined: new FormControl(false)
     });
   }
   constructor(
     public dialogRef: MatDialogRef<AddPatientComponentDialog>,
-    // @Inject(MAT_DIALOG_DATA) public data: DialogData
     ) {}
   onNoClick(): void {
     this.dialogRef.close();
   }
   onSubmit(patient) {
     console.log(patient);
+  }
+  activate() {
+    checked=!checked;
+    console.log(checked)
   }
 
 }

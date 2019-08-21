@@ -4,7 +4,9 @@ export class Patient {
       public id: number,
       public firstname: string,
       public lastname: string,
-      public alterEgo?: string //optional
+      public diagnosis: string, 
+      public examined: boolean,
+      public notes?: string
     ) {  }
   
   }
