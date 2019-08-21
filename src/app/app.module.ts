@@ -14,7 +14,7 @@ import { AddPatientComponentDialog } from './add-patient/add-patient.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatInputModule} from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -38,7 +38,7 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatTooltipModule,
     MatInputModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

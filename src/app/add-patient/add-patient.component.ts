@@ -2,12 +2,8 @@ import { Component, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {NgForm} from '@angular/forms';
 import { Patient } from './Patient';
+import { FormGroup, FormControl } from '@angular/forms'
 
-let data: Patient;
-// export interface DialogData {
-//   firstname: string;
-//   lastname: string;
-// }
 
 @Component({
   selector: 'app-add-patient',
@@ -15,13 +11,12 @@ let data: Patient;
   styleUrls: ['./add-patient.component.css']
 })
 export class AddPatientComponent {
-  // animal: string;
-  // name = "mar";
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddPatientComponentDialog, {
       width: '60%',
+      minHeight: '400px',
       // data: {name: this.name, animal: this.animal}
     });
 
@@ -37,12 +32,18 @@ export class AddPatientComponent {
   templateUrl: './add-patient-dialog.component.html',
 })
 export class AddPatientComponentDialog {
-  
+  form;
+  ngOnInit() {
+    this.form = new FormGroup({ 
+      id: new FormControl(0),
+      firstname: new FormControl(),
+      lastname: new FormControl(),
+    });
+  }
   constructor(
     public dialogRef: MatDialogRef<AddPatientComponentDialog>,
     // @Inject(MAT_DIALOG_DATA) public data: DialogData
     ) {}
-  data = new Patient(1,'','');
   onNoClick(): void {
     this.dialogRef.close();
   }
