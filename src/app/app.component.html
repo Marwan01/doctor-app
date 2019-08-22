@@ -1,6 +1,6 @@
 <app-toolbar></app-toolbar>
-<mat-grid-list cols="4" rowHeight="2:1">
-        <mat-grid-tile>
+<mat-grid-list cols="4">
+        <mat-grid-tile *ngFor="let patient of patients | async">
                 <app-patient-card></app-patient-card>
         </mat-grid-tile>
         <mat-grid-tile>

@@ -22,9 +22,10 @@ import {MatRadioModule} from '@angular/material/radio';
 import { PatientCardComponent } from './patient-card/patient-card.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {HttpClientModule} from '@angular/common/http'
-
-
+import {HttpClientModule} from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 
 
@@ -57,7 +58,9 @@ import {HttpClientModule} from '@angular/common/http'
     MatRadioModule,
     MatCardModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],

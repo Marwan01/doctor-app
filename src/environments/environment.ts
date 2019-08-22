@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyC-Nsgev-wpciFRvhEXNAj1YvTA6ITc5kc",
+    authDomain: "doctor-app-1b690.firebaseapp.com",
+    databaseURL: "https://doctor-app-1b690.firebaseio.com",
+    projectId: "doctor-app-1b690",
+    storageBucket: "",
+    messagingSenderId: "553648491802",
+    appId: "1:553648491802:web:9ab85ef2c9cf19ff"
+  }
 };
 
 /*
@@ -13,4 +22,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+import 'zone.js/dist/zone-error';  // Included with Angular CLI.

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { Patient } from './Patient';
+
 
 @Component({
   selector: 'app-add-patient',
@@ -39,7 +39,7 @@ export class AddPatientComponentDialog {
       date: new FormControl(null),
       examined: new FormControl(false),
     });
-  }
+  } 
   constructor(
     public dialogRef: MatDialogRef<AddPatientComponentDialog>,
   ) {}
