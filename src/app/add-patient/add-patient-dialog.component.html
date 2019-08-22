@@ -23,7 +23,7 @@
     </mat-form-field>
     <div mat-dialog-actions>
         <button mat-button (click)="onNoClick()">Cancel</button>
-        <button [disabled]="!form.valid" mat-button (click)="onSubmit(form.value)" [mat-dialog-close] cdkFocusInitial>Submit</button>
+        <button [disabled]="!form.valid" mat-button (click)="onSubmit(form.value)" [mat-dialog-close]>Submit</button>
       </div>
   </form>
 </div>
