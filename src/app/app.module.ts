@@ -19,6 +19,10 @@ import {MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import { PatientCardComponent } from './patient-card/patient-card.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {HttpClientModule} from '@angular/common/http'
 
 
 
@@ -31,6 +35,7 @@ import {MatRadioModule} from '@angular/material/radio';
     ToolbarComponent,
     AddPatientComponent,
     AddPatientComponentDialog,
+    PatientCardComponent,
     
   ],
   imports: [
@@ -49,7 +54,10 @@ import {MatRadioModule} from '@angular/material/radio';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCardModule,
+    MatGridListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
