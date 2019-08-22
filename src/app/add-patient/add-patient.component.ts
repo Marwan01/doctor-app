@@ -1,10 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {NgModule} from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Patient } from './Patient';
 
-let checked=false;
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
@@ -27,29 +25,29 @@ export class AddPatientComponent {
 })
 export class AddPatientComponentDialog {
   form;
+  checked = false;
   ngOnInit() {
     this.form = new FormGroup({ 
-      id: new FormControl(0),
-      firstname: new FormControl(),
-      lastname: new FormControl(),
-      diagnosis: new FormControl(),
+      id: new FormControl(),
+      firstname: new FormControl('', Validators.compose([Validators.required,
+        Validators.pattern('[\\w\\-\\s\\/]+')])),
+      lastname: new FormControl('', Validators.compose([Validators.required,
+        Validators.pattern('[\\w\\-\\s\\/]+')])),
+      diagnosis: new FormControl('', Validators.compose([Validators.required,
+        Validators.pattern('[\\w\\-\\s\\/]+')])),
       notes: new FormControl(),
-      date: new FormControl(),
-      examined: new FormControl(false)
+      date: new FormControl(null),
+      examined: new FormControl(false),
     });
   }
   constructor(
     public dialogRef: MatDialogRef<AddPatientComponentDialog>,
-    ) {}
+  ) {}
   onNoClick(): void {
     this.dialogRef.close();
   }
   onSubmit(patient) {
     console.log(patient);
-  }
-  activate() {
-    checked=!checked;
-    console.log(checked)
   }
 
 }
