@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-
+// import { patientsCollection } from '../app.component'
 
 @Component({
   selector: 'app-add-patient',
@@ -36,7 +36,7 @@ export class AddPatientComponentDialog {
       diagnosis: new FormControl('', Validators.compose([Validators.required,
         Validators.pattern('[\\w\\-\\s\\/]+')])),
       notes: new FormControl(),
-      date: new FormControl(null),
+      examinedOn: new FormControl(null),
       examined: new FormControl(false),
     });
   } 
@@ -48,6 +48,8 @@ export class AddPatientComponentDialog {
   }
   onSubmit(patient) {
     console.log(patient);
+    // patientsCollection.add(patient)
+    
   }
 
 }

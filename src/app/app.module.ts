@@ -23,9 +23,9 @@ import { PatientCardComponent } from './patient-card/patient-card.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {HttpClientModule} from '@angular/common/http';
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFirestoreModule } from "angularfire2/firestore";
 
 
 

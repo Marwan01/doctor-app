@@ -1,17 +1,8 @@
 <app-toolbar></app-toolbar>
 <mat-grid-list cols="4">
-        <mat-grid-tile *ngFor="let patient of patients | async">
-                <app-patient-card></app-patient-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-                <app-patient-card></app-patient-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-                <app-patient-card></app-patient-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-                <app-patient-card></app-patient-card>
-        </mat-grid-tile>
-      </mat-grid-list>
+<mat-grid-tile *ngFor="let patient of patients | async">        
+<app-patient-card [patient]="patient"></app-patient-card>
+</mat-grid-tile>
+</mat-grid-list>
 
 <router-outlet></router-outlet>
