@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-// import { patientsCollection } from '../app.component'
+import { Patient } from '../add-patient/Patient';
+import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+
+
 
 @Component({
   selector: 'app-add-patient',
@@ -24,9 +28,15 @@ export class AddPatientComponent {
   templateUrl: './add-patient-dialog.component.html',
 })
 export class AddPatientComponentDialog {
+  patientsCollection: AngularFirestoreCollection<Patient>
+  patients: Observable<Patient[]>;
+
   form;
   checked = false;
   ngOnInit() {
+    this.patientsCollection = this.db.collection('patients')
+    this.patients = this.patientsCollection.valueChanges()
+
     this.form = new FormGroup({ 
       id: new FormControl(),
       firstname: new FormControl('', Validators.compose([Validators.required,
@@ -40,15 +50,17 @@ export class AddPatientComponentDialog {
       examined: new FormControl(false),
     });
   } 
-  constructor(
+  constructor(private db: AngularFirestore,
     public dialogRef: MatDialogRef<AddPatientComponentDialog>,
   ) {}
   onNoClick(): void {
     this.dialogRef.close();
   }
   onSubmit(patient) {
+    console.log(this.patientsCollection);
     console.log(patient);
-    // patientsCollection.add(patient)
+    this.patientsCollection.add(patient)
+    console.log(this.patientsCollection);
     
   }
 

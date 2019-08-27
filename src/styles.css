@@ -3,3 +3,7 @@
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 [hidden] { display: none !important;}
+
+.mat-figure {
+    display: block !important;
+}

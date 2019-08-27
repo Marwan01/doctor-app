@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-// import 'rjxs/add/operator/map'
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 interface Patient {
   id: number,
@@ -22,7 +21,6 @@ export class AppComponent implements OnInit {
   patients: Observable<Patient[]>;
 
   constructor( private db: AngularFirestore) {
-    // this.patients = db.collection('patients').valueChanges();
   }
 
   ngOnInit() {
