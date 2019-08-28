@@ -1,6 +1,8 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Patient } from '../add-patient/Patient';
 import { AngularFirestore } from 'angularfire2/firestore';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -10,13 +12,18 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class PatientCardComponent implements OnInit {
   @Input() patient: Patient;
+  durationInSeconds = 5;
 
-  constructor( private db: AngularFirestore) {
+  constructor( private db: AngularFirestore,
+    private _snackBar: MatSnackBar) {
   }
   ngOnInit() {
   }
 
   onDelete(patient) {
+    this._snackBar.open("Patient " + patient.firstname + " " + patient.lastname + " has been deleted" , "Dismiss" , {
+      duration: this.durationInSeconds * 1000,
+    });
     this.db.collection('patients')
     .get()
     .subscribe((snapshot) =>{
