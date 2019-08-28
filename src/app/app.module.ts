@@ -27,6 +27,8 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatStepperModule} from '@angular/material/stepper';
+
 
 
 
@@ -64,7 +66,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent],
