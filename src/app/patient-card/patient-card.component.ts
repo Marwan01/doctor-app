@@ -8,8 +8,8 @@ import { Patient } from '../add-patient/Patient';
 })
 export class PatientCardComponent implements OnInit {
   @Input() patient: Patient;
-  constructor() { }
+  constructor() { 
+  }
   ngOnInit() {
   }
-
 }

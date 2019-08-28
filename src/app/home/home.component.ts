@@ -8,7 +8,7 @@ interface Patient {
   lastname: string,
   diagnosis: string, 
   examined: boolean,
-  examinedOn?: Date,
+  examinedOn?: any,
   notes?: string
 }
 

@@ -6,7 +6,7 @@ export class Patient {
       public lastname: string,
       public diagnosis: string, 
       public examined: boolean,
-      public examinedOn?: Date,
+      public examinedOn?: any,
       public notes?: string
     ) {  }
   
