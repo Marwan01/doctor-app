@@ -46,12 +46,14 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      Congratulations, you learned how to use the features of Doctor-app!
+      
+      <p>Congratulations, you learned how to use the features of Doctor-app!</p>
+      <img src="../../assets/images/giphy.gif"/>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button routerLink="/" mat-button (click)="stepper.reset()">Exit</button>
       </div>
-      <img src="../../assets/images/mygif.gif" />
+      
       
     </mat-step>
   </mat-horizontal-stepper>

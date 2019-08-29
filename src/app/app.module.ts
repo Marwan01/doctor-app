@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
@@ -28,10 +28,10 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
+import { ConfigService } from './services/config.service';
 
 
-
-
+import * as $ from 'jquery';
 
 
 @NgModule({
@@ -69,8 +69,23 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSnackBarModule,
     MatStepperModule
   ],
-  providers: [],
+  providers: [{provide: APP_INITIALIZER, useFactory: configFactory, deps: [ConfigService], multi: true}],
   bootstrap: [AppComponent],
   entryComponents: [AddPatientComponentDialog]
 })
 export class AppModule { }
+
+// TODO: Find a better place for this
+export function configFactory(provider: ConfigService) {
+  let configs = [
+    provider.loadConfig(),
+  ];
+
+  let splashScreenExit = new Promise((resolve, reject) => {
+    Promise.all(configs).then(() => {
+      $('.splash-screen').animate({ top: '100%' },400,() => resolve(true));
+    });
+  });
+
+  return () => splashScreenExit;
+}
