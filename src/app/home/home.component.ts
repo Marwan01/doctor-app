@@ -3,13 +3,13 @@ import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 interface Patient {
-  id: number,
-  firstname: string,
-  lastname: string,
-  diagnosis: string, 
-  examined: boolean,
-  examinedOn?: any,
-  notes?: string
+  id: number;
+  firstname: string;
+  lastname: string;
+  diagnosis: string;
+  examined: boolean;
+  examinedOn?: any;
+  notes?: string;
 }
 
 @Component({
@@ -19,15 +19,15 @@ interface Patient {
 })
 export class HomeComponent implements OnInit {
 
-  patientsCollection: AngularFirestoreCollection<Patient>
+  patientsCollection: AngularFirestoreCollection<Patient>;
   patients: Observable<Patient[]>;
 
   constructor( private db: AngularFirestore) {
   }
 
   ngOnInit() {
-    this.patientsCollection = this.db.collection('patients')
-    this.patients = this.patientsCollection.valueChanges()
+    this.patientsCollection = this.db.collection('patients');
+    this.patients = this.patientsCollection.valueChanges();
   }
 
 }

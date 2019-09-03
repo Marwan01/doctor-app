@@ -25,7 +25,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {HttpClientModule} from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import { ConfigService } from './services/config.service';
@@ -42,7 +42,7 @@ import * as $ from 'jquery';
     AddPatientComponentDialog,
     PatientCardComponent,
     routingComponents,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -77,13 +77,13 @@ export class AppModule { }
 
 // TODO: Find a better place for this
 export function configFactory(provider: ConfigService) {
-  let configs = [
+  const configs = [
     provider.loadConfig(),
   ];
 
-  let splashScreenExit = new Promise((resolve, reject) => {
+  const splashScreenExit = new Promise((resolve, reject) => {
     Promise.all(configs).then(() => {
-      $('.splash-screen').animate({ top: '100%' },400,() => resolve(true));
+      $('.splash-screen').animate({ top: '100%' }, 400, () => resolve(true));
     });
   });
 

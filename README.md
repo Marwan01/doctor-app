@@ -12,6 +12,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
+## Lint
+
+Run `npm run lint` to see if there are any lint problems. The linting should return you a list of all the existing errors. Use `--fix` flag to fix all found linting errors.
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
