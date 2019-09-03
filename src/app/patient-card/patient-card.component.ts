@@ -15,23 +15,23 @@ export class PatientCardComponent implements OnInit {
   durationInSeconds = 5;
 
   constructor( private db: AngularFirestore,
-    private _snackBar: MatSnackBar) {
+               private _snackBar: MatSnackBar) {
   }
   ngOnInit() {
   }
 
   onDelete(patient) {
-    this._snackBar.open("Patient " + patient.firstname + " " + patient.lastname + " has been deleted" , "Dismiss" , {
+    this._snackBar.open('Patient ' + patient.firstname + ' ' + patient.lastname + ' has been deleted' , 'Dismiss' , {
       duration: this.durationInSeconds * 1000,
     });
     this.db.collection('patients')
     .get()
-    .subscribe((snapshot) =>{
+    .subscribe((snapshot) => {
       snapshot.forEach(doc => {
-        if(patient.firstname === doc.data().firstname && patient.lastname === doc.data().lastname && patient.diagnosis === doc.data().diagnosis) {
-          this.db.collection('patients').doc(doc.id).delete()
+        if (patient.firstname === doc.data().firstname && patient.lastname === doc.data().lastname && patient.diagnosis === doc.data().diagnosis) {
+          this.db.collection('patients').doc(doc.id).delete();
         }
       });
-    })
+    });
   }
 }

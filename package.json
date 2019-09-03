@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "^8.2.3",
     "@angular/router": "^8.2.3",
     "@types/jquery": "^3.3.31",
+    "@typescript-eslint/eslint-plugin": "^2.1.0",
+    "@typescript-eslint/parser": "^2.1.0",
     "angularfire2": "^5.2.1",
     "firebase": "^6.4.2",
     "jquery": "^3.4.1",
