@@ -1,30 +1,22 @@
 dist: trusty
 sudo: false
-
 language: node_js
 node_js:
-  - '10'
-
-
+- '10'
 cache:
   directories:
-    - ./node_modules
-
+  - "./node_modules"
 branches:
   only:
   - master
-
 script:
-  - echo "Deploy!!"
-  - ./node_modules/.bin/eslint './src/app/*.ts' --fix
-  - ng build --prod
-  # - ng test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
-  # - firebase deploy says firebase: command not found
-
-install:
-  - npm install -g firebase-tools
-
+- echo "Deploy!!"
+- "./node_modules/.bin/eslint './src/app/*.ts' --fix"
+before_deploy: 
+- npm install
+- ng build --prod
 deploy:
   provider: firebase
   token:
-    secure: "Ih2z1ONDHsf5JWGAZQ7xoSD4pPfKsc99CC6OZ5eBPPOOVkNIexLMaQteEcXHD6HqGBcAYW9/4WD+48YLq2eO/Tl+JnaAuoKyF6K8pjhqsu5aoXcvyuTreV5bdYeoq0Ao2M1N5WgerEhRRUBsqpHjy7cfZAvQlPsRqFTpPG49VvXTDTX9J+eXk/DUY8GzWTXzbutHco5/QmI7OTOIaKWyyqEnaGFyeSDgLz1hfpbCrdUlZ5UCn1tkgi8cINrbe/3INODyzhs5Ha6PJHGYB7kx9VhUR5VHVG/wBeyVDpFcwjm09L0mHR3nw32zXOViZ6mxJYyN238SzL6P/958JSVcE8ujG31yGRYAbL/bEET09W7wDwlVbJ9p8L1E0UfoBCbNNlw8w+lPsN+1cpGI0OydR/B+uaBe1a6Zub+SX8yEGgpFhjG5dA1Og/pXlK81Tqape2jSVH2dv4EoJkG8Fkbhe73eqXmvmBelvlJeW/MH1Gb2enxBEqiMyXTa6qH+7z7wqolB8dp+2bzpLDRM6fnTm8D0T3YIecinX96F7h2tiW2vfeBVqmM16QT2yKpr3y+/hOeOJHxXrBaQ/ifFjU+QxN7u5tKzBM7ZyxOGLTYxCiNdEaOAjxkyJ/4cfCiakiSkZztcKMVkDqU6DAQLPFj2btmKY/Qae3OI+Lkz75FTvns="
+    secure: fc4yV9pBdv8EF6+CodoeDkGmmlFltk5z0F3F8YjsJhOk8sFOOOrVujSgNBfVMPp+WNG+wOJWeemfD/V42bhEW5Haj+oZGETew8IMR0jAKvehDHIkm+1+fQmPFkN+76xGcCAJqebGbt3oYLX7hEpEa2RdyHjlubQ365MwbPBAnmLJ1ZeiAiZYB47MRsVsEYx8WeimzC2iQBw6dfbxiP0I9GOfJTs2tL8qAAVD1L+9B7g5BUKRSnApUo0DZOAUYkgbf69osfgvBEr0XvwXyUFyz+SDCA7CWe/3TBJjYFqhUDQKHia/SSb6pNFThhsjW+e6TLWK8Zmn0+MgVjpipg0dFMPEcPDOst/rVKWADH6lw5SvA4R82Pfzu43THKUpR/r6IZttS9bG53off26CsLaevwTg59v/PAmBa9IF8m5uLkmEzsW7p0ey6sR0xx+eEFMVeWi829gSQUE5i9TD2O3E9f+jPPV08yHI5OAJVmz9vrL8Ki1E0Vp0UfK+vsJZBsLsATuw7FUdrohXud5mzMdsqEHTx3cPzbwONgRTSvXj3u2de+wuqkgscs8SH5vCHAFAnL06VqPlCPBqL3m02IHRdDINEg3PGKooiE3BELfs0QEsBBEQaiR0DFzvevASzGA5SUKVVrGX6DJk+SMCJPIovelIKrv6tQnmAV8ddtjX95A=
+  message: "this is an automatic deployment by travis - CI as a result of pushing to master"
