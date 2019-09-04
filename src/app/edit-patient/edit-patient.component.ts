@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 
-export var clickedPatient: Patient;
+export let clickedPatient: Patient;
 
 @Component({
   selector: 'app-edit-patient',
@@ -58,13 +58,13 @@ export class EditPatientComponentDialog {
   	this.dialogRef.close();
   }
    onEdit(patient) {
-	   console.log(this.dialogRef)
-	this.db.collection('patients')
+	   console.log(this.dialogRef);
+	   this.db.collection('patients')
     .get()
     .subscribe((snapshot) => {
       snapshot.forEach(doc => {
-		  if(patient.firstname === doc.data().firstname && patient.lastname === doc.data().lastname && patient.diagnosis === doc.data().diagnosis){
-			console.log(doc.data())
+		  if (patient.firstname === doc.data().firstname && patient.lastname === doc.data().lastname && patient.diagnosis === doc.data().diagnosis) {
+			console.log(doc.data());
 			this.db.collection('patients').doc(doc.id).set({
 				firstname: patient.firstname,
 				lastname: patient.lastname,
@@ -73,10 +73,10 @@ export class EditPatientComponentDialog {
 				examined: patient.examined,
 				notes: patient.notes
 			}).then(function() {
-				console.log("Document successfully written!");
+				console.log('Document successfully written!');
 			})
 			.catch(function(error) {
-				console.error("Error writing document: ", error);
+				console.error('Error writing document: ', error);
 			});
 		  }
 		});

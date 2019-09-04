@@ -4,14 +4,9 @@ sudo: false
 language: node_js
 node_js:
   - '10'
-  - '9'
 
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+before_script:
+  - npm install -g @angular/cli
 
 cache:
   directories:
@@ -21,4 +16,10 @@ install:
   - npm install
 
 script:
-  - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+  - ng lint --fix
+  - ng build --prod
+  - ng test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+
+  branches:
+  only:
+  - master

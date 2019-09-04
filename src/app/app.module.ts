@@ -74,7 +74,7 @@ import { EditPatientComponent, EditPatientComponentDialog } from './edit-patient
   ],
   providers: [{provide: APP_INITIALIZER, useFactory: configFactory, deps: [ConfigService], multi: true}],
   bootstrap: [AppComponent],
-  entryComponents: [AddPatientComponentDialog,EditPatientComponentDialog]
+  entryComponents: [AddPatientComponentDialog, EditPatientComponentDialog]
 })
 export class AppModule { }
 
