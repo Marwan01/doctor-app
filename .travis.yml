@@ -5,17 +5,13 @@ language: node_js
 node_js:
   - '10'
 
-before_script:
-  - npm install -g @angular/cli
 
 cache:
   directories:
     - ./node_modules
 
-install:
-  - npm install
 
 script:
-  - ng lint --fix
+  # - ng lint
   - ng build --prod
   # - ng test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
