@@ -19,7 +19,3 @@ script:
   - ng lint --fix
   - ng build --prod
   - ng test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
-
-  branches:
-  only:
-  - master
