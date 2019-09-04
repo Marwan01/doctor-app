@@ -15,11 +15,11 @@ branches:
   - master
 
 script:
+  - echo "Deploy!!"
   - ./node_modules/.bin/eslint './src/app/*.ts' --fix
   - ng build --prod
   # - ng test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
   # - firebase deploy says firebase: command not found
- - echo "Deploy!!"
 
 install:
   - npm install -g firebase-tools

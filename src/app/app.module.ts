@@ -32,60 +32,63 @@ import { ConfigService } from './services/config.service';
 
 
 import * as $ from 'jquery';
+import { EditPatientComponent, EditPatientComponentDialog } from './edit-patient/edit-patient.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ToolbarComponent,
-    AddPatientComponent,
-    AddPatientComponentDialog,
-    PatientCardComponent,
-    routingComponents,
+	declarations: [
+		AppComponent,
+		ToolbarComponent,
+		AddPatientComponent,
+		AddPatientComponentDialog,
+		PatientCardComponent,
+		routingComponents,
+		EditPatientComponent,
+		EditPatientComponentDialog
 
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatMenuModule,
-    MatIconModule,
-    MatDialogModule,
-    MatTooltipModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    MatRadioModule,
-    MatCardModule,
-    MatGridListModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    MatSnackBarModule,
-    MatStepperModule
-  ],
-  providers: [{provide: APP_INITIALIZER, useFactory: configFactory, deps: [ConfigService], multi: true}],
-  bootstrap: [AppComponent],
-  entryComponents: [AddPatientComponentDialog]
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		AppRoutingModule,
+		MatButtonModule,
+		MatToolbarModule,
+		MatSidenavModule,
+		MatMenuModule,
+		MatIconModule,
+		MatDialogModule,
+		MatTooltipModule,
+		MatInputModule,
+		ReactiveFormsModule,
+		MatDatepickerModule,
+		MatNativeDateModule,
+		MatCheckboxModule,
+		MatRadioModule,
+		MatCardModule,
+		MatGridListModule,
+		HttpClientModule,
+		AngularFireModule.initializeApp(environment.firebase),
+		AngularFirestoreModule,
+		MatSnackBarModule,
+		MatStepperModule
+	],
+	providers: [{provide: APP_INITIALIZER, useFactory: configFactory, deps: [ConfigService], multi: true}],
+	bootstrap: [AppComponent],
+	entryComponents: [AddPatientComponentDialog, EditPatientComponentDialog]
 })
 export class AppModule { }
 
 // TODO: Find a better place for this
 export function configFactory(provider: ConfigService) {
-  const configs = [
-    provider.loadConfig(),
-  ];
+	const configs = [
+		provider.loadConfig(),
+	];
 
-  const splashScreenExit = new Promise((resolve, reject) => {
-    Promise.all(configs).then(() => {
-      $('.splash-screen').animate({ top: '100%' }, 400, () => resolve(true));
-    });
-  });
+	const splashScreenExit = new Promise((resolve, reject) => {
+		Promise.all(configs).then(() => {
+			$('.splash-screen').animate({ top: '100%' }, 400, () => resolve(true));
+		});
+	});
 
-  return () => splashScreenExit;
+	return () => splashScreenExit;
 }
