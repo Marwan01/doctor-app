@@ -32,6 +32,7 @@ import { ConfigService } from './services/config.service';
 
 
 import * as $ from 'jquery';
+import { EditPatientComponent, EditPatientComponentDialog } from './edit-patient/edit-patient.component';
 
 
 @NgModule({
@@ -42,6 +43,8 @@ import * as $ from 'jquery';
     AddPatientComponentDialog,
     PatientCardComponent,
     routingComponents,
+    EditPatientComponent,
+    EditPatientComponentDialog
 
   ],
   imports: [
@@ -71,7 +74,7 @@ import * as $ from 'jquery';
   ],
   providers: [{provide: APP_INITIALIZER, useFactory: configFactory, deps: [ConfigService], multi: true}],
   bootstrap: [AppComponent],
-  entryComponents: [AddPatientComponentDialog]
+  entryComponents: [AddPatientComponentDialog,EditPatientComponentDialog]
 })
 export class AppModule { }
 
