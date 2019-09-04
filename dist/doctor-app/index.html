@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" href="">
+  <meta charset="utf-8">
+  <title>DoctorApp</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+      .splash-screen {
+        background-color: #1976d2;
+        background: linear-gradient(145deg, #673ab7, #673ab7);
+        color: #fff;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        animation: fade-in ease 1s forwards;
+      }
+  
+      .splash-screen img {
+        width: 100px;
+        left: calc(50% - 50px);
+        top: calc(50% - 50px);
+        position: absolute;
+        opacity: 0;
+        animation: fadeinout linear 1.5s;
+        animation-delay: 1s;
+        animation-iteration-count: infinite;
+  
+      }
+  
+  
+      /* Animations */
+  
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+  
+        to {
+          opacity: 1;
+        }
+      }
+  
+      @-webkit-keyframes fadeinout {
+  
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+  
+        50% {
+          opacity: 1;
+        }
+      }
+  
+      @keyframes fadeinout {
+  
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+  
+        50% {
+          opacity: 1;
+        }
+      }
+    </style>
+<link rel="stylesheet" href="styles.457bf7ddec58ee718cf8.css"></head>
+<body>
+  <app-root>    <div class="splash-screen">
+      <img src="assets/images/nurse.svg" />
+    </div></app-root>
+<script src="runtime-es2015.b2aca5be9e7b8cc1a1b4.js" type="module"></script><script src="polyfills-es2015.707fe33a73ba6b994c2b.js" type="module"></script><script src="runtime-es5.a6586930f507951256e4.js" nomodule defer></script><script src="polyfills-es5.57490e75af362c0d08fd.js" nomodule defer></script><script src="main-es2015.9c9efd2f7304ccf9a992.js" type="module"></script><script src="main-es5.8f43eb9107b679f5ed18.js" nomodule defer></script></body>
+</html>
