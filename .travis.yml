@@ -12,7 +12,7 @@ cache:
 
 
 script:
-  ./node_modules/.bin/eslint './src/app/*.ts' --fix
+  - ./node_modules/.bin/eslint './src/app/*.ts' --fix
   - ng build --prod
   # - ng test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
   # - firebase deploy says firebase: command not found
