@@ -5,8 +5,7 @@ import { Patient } from '../add-patient/Patient';
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
-
-export let clickedPatient: Patient;
+let patient: Patient;
 
 @Component({
   selector: 'app-edit-patient',
@@ -15,14 +14,17 @@ export let clickedPatient: Patient;
 })
 export class EditPatientComponent {
 	@Input() cp: Patient;
-	constructor(public dialog: MatDialog) {}
+	constructor(public dialog: MatDialog) {
+	}
 	openDialog(): void {
 		this.dialog.open(EditPatientComponentDialog, {
 			width: '40%',
 			minHeight: '400px',
 		});
 	}
-
+	saveSender(p) {
+		patient = p;
+	}
 }
 
 @Component({
@@ -30,57 +32,59 @@ export class EditPatientComponent {
 	templateUrl: './edit-patient-dialog.component.html',
 })
 export class EditPatientComponentDialog {
-
+  pat = patient;
   patientsCollection: AngularFirestoreCollection<Patient>;
   patients: Observable<Patient[]>;
   form;
   checked = false;
+  constructor(private db: AngularFirestore,
+	public dialogRef: MatDialogRef<EditPatientComponentDialog>,
+) {}
   ngOnInit() {
   	this.patientsCollection = this.db.collection('patients');
   	this.patients = this.patientsCollection.valueChanges();
   	this.form = new FormGroup({
   		id: new FormControl(),
-  		firstname: new FormControl('', Validators.compose([Validators.required,
+  		firstname: new FormControl('', Validators.compose([
   			Validators.pattern('[\\w\\-\\s\\/]+')])),
-  		lastname: new FormControl('', Validators.compose([Validators.required,
+  		lastname: new FormControl('', Validators.compose([
   			Validators.pattern('[\\w\\-\\s\\/]+')])),
-  		diagnosis: new FormControl('', Validators.compose([Validators.required,
+  		diagnosis: new FormControl('', Validators.compose([
   			Validators.pattern('[\\w\\-\\s\\/]+')])),
-  		notes: new FormControl(),
+  		notes: new FormControl('', Validators.required),
   		examinedOn: new FormControl(null),
   		examined: new FormControl(false),
   	});
   }
-  constructor(private db: AngularFirestore,
-              public dialogRef: MatDialogRef<EditPatientComponentDialog>,
-  ) {}
   onNoClick(): void {
   	this.dialogRef.close();
   }
-   onEdit(patient) {
-	   console.log(this.dialogRef);
+   onEdit(newValue) {
 	   this.db.collection('patients')
     .get()
     .subscribe((snapshot) => {
-      snapshot.forEach(doc => {
-		  if (patient.firstname === doc.data().firstname && patient.lastname === doc.data().lastname && patient.diagnosis === doc.data().diagnosis) {
-			console.log(doc.data());
-			this.db.collection('patients').doc(doc.id).set({
-				firstname: patient.firstname,
-				lastname: patient.lastname,
-				diagnosis: patient.diagnosis,
-				examinedOn: patient.examinedOn,
-				examined: patient.examined,
-				notes: patient.notes
-			}).then(function() {
-				console.log('Document successfully written!');
-			})
-			.catch(function(error) {
-				console.error('Error writing document: ', error);
-			});
-		  }
+		snapshot.forEach(doc => {
+			if (patient.firstname === doc.data().firstname && patient.lastname === doc.data().lastname && patient.diagnosis === doc.data().diagnosis) {
+			this.editPatient(doc, newValue);
+			}
 		});
 	});
 }
 
+	editPatient(oldValue, newValue) {
+		let newNote = patient.notes + ' New Edit: \n' + newValue.notes;
+		this.db.collection('patients').doc(oldValue.id).set({
+			firstname: newValue.firstname,
+			lastname: newValue.lastname,
+			diagnosis: newValue.diagnosis,
+			examinedOn: newValue.examinedOn,
+			examined: newValue.examined,
+			notes: newNote
+		}).then(function() {
+			console.log('Document successfully written!');
+		})
+		.catch(function(error) {
+			console.error('Error writing document: ', error);
+		});
+	}
 }
