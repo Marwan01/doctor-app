@@ -2,6 +2,11 @@
 This app will use forms to take in data from a doctor about their patients, validate it, and store it in a database.
 It will allow the doctor to keep track of the patient data and to take not of changes and updates about them.
 
+# What It Looks Like
+
+![demogif](/src/assets/images/demo.gif)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
 
 ## Development server
