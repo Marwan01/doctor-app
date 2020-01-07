@@ -25,7 +25,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {HttpClientModule} from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import { ConfigService } from './services/config.service';

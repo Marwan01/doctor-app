@@ -1,6 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Patient } from '../add-patient/Patient';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { AppComponent } from '../app.component';
 

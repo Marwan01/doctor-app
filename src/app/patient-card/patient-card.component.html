@@ -3,7 +3,9 @@
         <mat-card-header>
           <!-- <div mat-card-avatar class="example-header-image"></div> -->
           <mat-card-title>{{patient.firstname}} {{patient.lastname}}</mat-card-title>
-          <mat-card-subtitle *ngIf="patient.examined">{{patient.examinedOn.seconds * 1000 | date}}</mat-card-subtitle>
+
+          <!-- TODO: fix this date conversion problem -->
+          <mat-card-subtitle *ngIf="patient.examinedOn">{{patient.examinedOn.seconds * 1000 | date}}</mat-card-subtitle>
         </mat-card-header>
         <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
         <mat-card-content>
