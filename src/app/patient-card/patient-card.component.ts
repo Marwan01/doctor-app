@@ -28,7 +28,7 @@ export class PatientCardComponent implements OnInit {
     .get()
     .subscribe((snapshot) => {
       snapshot.forEach(doc => {
-        if (patient.firstname === doc.data().firstname && patient.lastname === doc.data().lastname && patient.diagnosis === doc.data().diagnosis) {
+  				if (patient.firstname === doc.data().firstname && patient.lastname === doc.data().lastname && patient.diagnosis === doc.data().diagnosis) {
           this.db.collection('patients').doc(doc.id).delete();
         }
       });
